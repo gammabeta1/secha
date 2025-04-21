@@ -55,10 +55,16 @@ app.get('/verified', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'verified.html'));
 });
 
+// Default route
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+// Start the server and apply timeout protection
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running at http://0.0.0.0:${PORT}`);
 });
+
+// Timeout protection: useful for slow users or external APIs
+server.keepAliveTimeout = 120000; // 2 minutes
+server.headersTimeout = 120000;
