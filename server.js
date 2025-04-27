@@ -27,7 +27,7 @@ app.get('/spinner2', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'spinner2.html'));
 });
 
-app.get('/spiner3', (req, res) => {
+app.get('/spinner3', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'spinner3.html'));
 });
 
